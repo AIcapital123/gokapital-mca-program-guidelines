@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16365D">
+  <title>GoKapital MCA Program Guidelines</title>
+  <style>
+    :root {
+      --navy: #16365D;
+      --green: #4AB547;
+      --green-dark: #2E8B3A;
+      --blue: #2F80ED;
+      --teal: #1689A5;
+      --gray: #6B7280;
+      --ink: #182230;
+      --muted: #607080;
+      --line: #D9E2EA;
+      --canvas: #EEF2F5;
+      --surface: #FFFFFF;
+      --soft: #F7F9FA;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; font-family: Inter, Aptos, "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--canvas); }
+    button, a { font: inherit; }
+    .app-header { background: white; border-top: 5px solid var(--navy); border-bottom: 4px solid var(--green); overflow-x: auto; }
+    .header-inner { max-width: 1320px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand-lockup { flex: 0 0 auto; display: flex; align-items: center; min-width: 0; }
+    .brand-logo { width: 176px; height: auto; display: block; }
+    .header-contact { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 190px; }
+    .header-contact a { color: var(--navy); font-size: 11px; font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .header-contact a + a { padding-left: 12px; border-left: 1px solid var(--line); }
+    .header-contact a:hover { color: var(--green-dark); }
+    .header-actions { flex: 0 0 auto; display: flex; flex-wrap: nowrap; align-items: center; gap: 7px; }
+    .button { min-height: 34px; display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; border: 1px solid #B9C6D1; border-radius: 5px; background: white; color: var(--navy); text-decoration: none; font-size: 11px; font-weight: 750; cursor: pointer; white-space: nowrap; }
+    .button:hover { background: var(--soft); }
+    .language-toggle { display: inline-flex; min-height: 34px; border: 1px solid #B9C6D1; border-radius: 5px; overflow: hidden; background: white; }
+    .language-toggle button { min-width: 36px; border: 0; border-right: 1px solid var(--line); background: white; color: var(--muted); cursor: pointer; font-size: 11px; font-weight: 750; }
+    .language-toggle button:last-child { border-right: 0; }
+    .language-toggle button.active { background: var(--navy); color: white; }
+    button:focus-visible, a:focus-visible { outline: 3px solid rgba(74,181,71,.28); outline-offset: 2px; }
+    main { max-width: 1320px; margin: 0 auto; padding: 24px 26px 48px; }
+    .page-title { margin: 0 0 18px; color: var(--navy); font-size: 25px; line-height: 1.2; letter-spacing: 0; text-align: center; }
+    .table-wrap { max-height: calc(100vh - 235px); overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: white; box-shadow: 0 4px 14px rgba(14,39,69,.05); }
+    table { width: 100%; min-width: 1120px; border-collapse: separate; border-spacing: 0; font-size: 12px; }
+    th, td { padding: 13px 14px; text-align: center; vertical-align: middle; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); line-height: 1.42; overflow-wrap: anywhere; }
+    thead th { position: sticky; top: 0; z-index: 3; color: white; font-size: 13px; text-transform: uppercase; }
+    thead th:first-child { left: 0; z-index: 5; width: 190px; min-width: 190px; text-align: left; background: var(--navy); }
+    thead th:nth-child(2) { background: var(--navy); }
+    thead th:nth-child(3) { background: var(--green-dark); }
+    thead th:nth-child(4) { background: var(--blue); }
+    thead th:nth-child(5) { background: var(--teal); }
+    thead th:nth-child(6) { background: var(--gray); }
+    tbody th { position: sticky; left: 0; z-index: 2; width: 190px; min-width: 190px; text-align: left; background: var(--soft); color: var(--navy); font-weight: 800; text-transform: uppercase; white-space: normal; overflow-wrap: anywhere; }
+    td.tier-1 { background: #E8EFF6; }
+    td.tier-2 { background: #EAF6EA; }
+    td.tier-3 { background: #EAF2FD; }
+    td.tier-4 { background: #E8F5F7; }
+    td.tier-5 { background: #F3F4F6; }
+    tr:last-child th, tr:last-child td { border-bottom: 0; }
+    th:last-child, td:last-child { border-right: 0; }
+    .section { margin-top: 26px; }
+    .section-title { margin: 0 0 12px; color: var(--navy); font-size: 17px; text-transform: uppercase; letter-spacing: 0; }
+    .risk-list { border-top: 4px solid var(--navy); background: white; }
+    .risk-row { display: grid; grid-template-columns: 185px minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+    .risk-row strong { padding: 12px 14px; color: var(--navy); background: var(--soft); font-size: 11px; text-transform: uppercase; overflow-wrap: anywhere; }
+    .risk-row span { padding: 12px 14px; font-size: 11px; line-height: 1.45; text-transform: uppercase; }
+    .checklist { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .checklist li { min-width: 0; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; padding: 13px 15px; background: white; font-size: 12px; line-height: 1.48; }
+    .check-number { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: #EAF6EA; color: var(--green-dark); font-weight: 800; }
+    .disclaimer { margin: 22px 0 0; padding: 14px 18px; border-top: 1px solid var(--line); background: #F7F9FA; color: var(--muted); text-align: center; font-size: 11px; line-height: 1.5; }
+    @media (max-width: 880px) {
+      .header-inner { min-width: 720px; padding: 11px 12px; gap: 8px; }
+      .brand-logo { width: 138px; }
+      .header-contact { min-width: 170px; gap: 7px; }
+      .header-contact a { font-size: 9px; }
+      .header-contact a + a { padding-left: 7px; }
+      .header-actions { gap: 5px; }
+      .button { min-height: 32px; padding: 0 7px; font-size: 10px; }
+      .language-toggle { min-height: 32px; }
+      .language-toggle button { min-width: 32px; font-size: 10px; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .page-title { font-size: 20px; }
+      main { padding: 18px 12px 38px; }
+      .risk-row { grid-template-columns: 1fr; }
+      .risk-row strong { padding-bottom: 6px; }
+      .risk-row span { padding-top: 4px; }
+    }
+    @media print {
+      body { background: white; }
+      .header-actions { display: none; }
+      main { max-width: none; padding: 14px; }
+      .table-wrap { max-height: none; overflow: visible; box-shadow: none; }
+      thead th, tbody th { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-lockup">
+        <img class="brand-logo" src="data:image/png;base64,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" alt="GoKapital">
+      </div>
+      <nav class="header-contact" aria-label="GoKapital contact information">
+        <a href="https://www.gokapital.com" target="_blank" rel="noopener">WWW.GOKAPITAL.COM</a>
+        <a href="tel:+18662572973">1-866-257-2973</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button" href="gokapital-mca-program-guidelines.xlsx" download data-en="Download XLSX" data-es="Descargar XLSX">Download XLSX</a>
+        <button class="button" id="printButton" type="button" data-en="Print / Save PDF" data-es="Imprimir / Guardar PDF">Print / Save PDF</button>
+        <div class="language-toggle" role="group" aria-label="Language">
+          <button class="active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <h1 class="page-title" data-en="Revenue-Based Financing / Merchant Cash Advance Guidelines" data-es="Guías de Financiamiento Basado en Ingresos / Adelanto de Efectivo">Revenue-Based Financing / Merchant Cash Advance Guidelines</h1>
+    <section class="table-wrap" aria-label="MCA tier guidelines">
+      <table>
+        <thead><tr><th data-en="" data-es=""></th><th data-en="TIER A" data-es="NIVEL A">TIER A</th><th data-en="TIER B" data-es="NIVEL B">TIER B</th><th data-en="TIER C" data-es="NIVEL C">TIER C</th><th data-en="TIER D" data-es="NIVEL D">TIER D</th><th data-en="TIER E" data-es="NIVEL E">TIER E</th></tr></thead>
+        <tbody><tr>
+    <th scope="row" data-en="OVERALL PROFILE" data-es="PERFIL GENERAL">OVERALL PROFILE</th>
+    <td class="tier-1" data-en="680+ credit; 3+ years; strong balances; 0-1 MCA" data-es="Crédito 680+; 3+ años; saldos fuertes; 0-1 MCA">680+ credit; 3+ years; strong balances; 0-1 MCA</td><td class="tier-2" data-en="620+ credit; 2+ years; stable balances; up to 2 MCAs" data-es="Crédito 620+; 2+ años; saldos estables; hasta 2 MCA">620+ credit; 2+ years; stable balances; up to 2 MCAs</td><td class="tier-3" data-en="550+ credit; 1+ year; stable deposits; up to 3 MCAs" data-es="Crédito 550+; 1+ año; depósitos estables; hasta 3 MCA">550+ credit; 1+ year; stable deposits; up to 3 MCAs</td><td class="tier-4" data-en="500+ credit; 6+ months; moderate bank risk; up to 4 MCAs" data-es="Crédito 500+; 6+ meses; riesgo bancario moderado; hasta 4 MCA">500+ credit; 6+ months; moderate bank risk; up to 4 MCAs</td><td class="tier-5" data-en="Below 500 or startup/high-risk exception; up to 5-7 MCAs" data-es="Menos de 500 o excepción de startup/alto riesgo; hasta 5-7 MCA">Below 500 or startup/high-risk exception; up to 5-7 MCAs</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="MAX FUNDING AMOUNT" data-es="MONTO MÁXIMO DE FINANCIAMIENTO">MAX FUNDING AMOUNT</th>
+    <td class="tier-1" data-en="Up to $25,000,000" data-es="Hasta $25,000,000">Up to $25,000,000</td><td class="tier-2" data-en="Up to $5,000,000" data-es="Hasta $5,000,000">Up to $5,000,000</td><td class="tier-3" data-en="Up to $2,500,000" data-es="Hasta $2,500,000">Up to $2,500,000</td><td class="tier-4" data-en="Up to $1,000,000" data-es="Hasta $1,000,000">Up to $1,000,000</td><td class="tier-5" data-en="Up to $500,000" data-es="Hasta $500,000">Up to $500,000</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="APPROVAL AMOUNT" data-es="MONTO DE APROBACIÓN">APPROVAL AMOUNT</th>
+    <td class="tier-1" data-en="0.75x-1.50x average monthly revenue" data-es="0.75x-1.50x ingresos mensuales promedio">0.75x-1.50x average monthly revenue</td><td class="tier-2" data-en="0.50x-1.00x average monthly revenue" data-es="0.50x-1.00x ingresos mensuales promedio">0.50x-1.00x average monthly revenue</td><td class="tier-3" data-en="0.35x-0.75x average monthly revenue" data-es="0.35x-0.75x ingresos mensuales promedio">0.35x-0.75x average monthly revenue</td><td class="tier-4" data-en="0.25x-0.50x average monthly revenue" data-es="0.25x-0.50x ingresos mensuales promedio">0.25x-0.50x average monthly revenue</td><td class="tier-5" data-en="0.15x-0.35x average monthly revenue" data-es="0.15x-0.35x ingresos mensuales promedio">0.15x-0.35x average monthly revenue</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="TERM LENGTH" data-es="PLAZO">TERM LENGTH</th>
+    <td class="tier-1" data-en="12-24 months; up to 36 by exception" data-es="12-24 meses; hasta 36 por excepción">12-24 months; up to 36 by exception</td><td class="tier-2" data-en="9-18 months" data-es="9-18 meses">9-18 months</td><td class="tier-3" data-en="6-12 months" data-es="6-12 meses">6-12 months</td><td class="tier-4" data-en="3-8 months" data-es="3-8 meses">3-8 months</td><td class="tier-5" data-en="1-5 months" data-es="1-5 meses">1-5 months</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="PAYMENT FREQUENCY" data-es="FRECUENCIA DE PAGO">PAYMENT FREQUENCY</th>
+    <td class="tier-1" data-en="Biweekly, weekly &amp; daily available" data-es="Quincenal, semanal y diario disponibles">Biweekly, weekly &amp; daily available</td><td class="tier-2" data-en="Biweekly, weekly &amp; daily available" data-es="Quincenal, semanal y diario disponibles">Biweekly, weekly &amp; daily available</td><td class="tier-3" data-en="Weekly &amp; daily available; biweekly by exception" data-es="Semanal y diario disponibles; quincenal por excepción">Weekly &amp; daily available; biweekly by exception</td><td class="tier-4" data-en="Daily available; weekly by exception" data-es="Diario disponible; semanal por excepción">Daily available; weekly by exception</td><td class="tier-5" data-en="Daily available" data-es="Diario disponible">Daily available</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="MONTHLY REVENUE" data-es="INGRESOS MENSUALES">MONTHLY REVENUE</th>
+    <td class="tier-1" data-en="$100,000+" data-es="$100,000+">$100,000+</td><td class="tier-2" data-en="$50,000+" data-es="$50,000+">$50,000+</td><td class="tier-3" data-en="$25,000+" data-es="$25,000+">$25,000+</td><td class="tier-4" data-en="$15,000+" data-es="$15,000+">$15,000+</td><td class="tier-5" data-en="$10,000+" data-es="$10,000+">$10,000+</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="TIME IN BUSINESS" data-es="TIEMPO EN EL NEGOCIO">TIME IN BUSINESS</th>
+    <td class="tier-1" data-en="3+ years" data-es="3+ años">3+ years</td><td class="tier-2" data-en="2+ years" data-es="2+ años">2+ years</td><td class="tier-3" data-en="12+ months" data-es="12+ meses">12+ months</td><td class="tier-4" data-en="6-11 months" data-es="6-11 meses">6-11 months</td><td class="tier-5" data-en="3-5 months; ITIN still requires 12+ months" data-es="3-5 meses; ITIN requiere 12+ meses">3-5 months; ITIN still requires 12+ months</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="CREDIT SCORE" data-es="PUNTAJE DE CRÉDITO">CREDIT SCORE</th>
+    <td class="tier-1" data-en="680+" data-es="680+">680+</td><td class="tier-2" data-en="620-679" data-es="620-679">620-679</td><td class="tier-3" data-en="550-619" data-es="550-619">550-619</td><td class="tier-4" data-en="500-549" data-es="500-549">500-549</td><td class="tier-5" data-en="Below 500 or no-minimum program; exception only" data-es="Menos de 500 o programa sin mínimo; solo por excepción">Below 500 or no-minimum program; exception only</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="NSFS / NEGATIVE DAYS" data-es="NSF / DÍAS NEGATIVOS">NSFS / NEGATIVE DAYS</th>
+    <td class="tier-1" data-en="0-1 per month" data-es="0-1 por mes">0-1 per month</td><td class="tier-2" data-en="0-2 per month" data-es="0-2 por mes">0-2 per month</td><td class="tier-3" data-en="Up to 4 per month" data-es="Hasta 4 por mes">Up to 4 per month</td><td class="tier-4" data-en="Up to 5 per month" data-es="Hasta 5 por mes">Up to 5 per month</td><td class="tier-5" data-en="Up to 6-8 per month, case by case" data-es="Hasta 6-8 por mes, caso por caso">Up to 6-8 per month, case by case</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="MAX EXISTING MCA POSITIONS" data-es="MÁXIMO DE POSICIONES MCA EXISTENTES">MAX EXISTING MCA POSITIONS</th>
+    <td class="tier-1" data-en="1" data-es="1">1</td><td class="tier-2" data-en="2" data-es="2">2</td><td class="tier-3" data-en="3" data-es="3">3</td><td class="tier-4" data-en="4" data-es="4">4</td><td class="tier-5" data-en="5-7, case by case" data-es="5-7, caso por caso">5-7, case by case</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="MINIMUM MONTHLY DEPOSITS" data-es="DEPÓSITOS MENSUALES MÍNIMOS">MINIMUM MONTHLY DEPOSITS</th>
+    <td class="tier-1" data-en="10+" data-es="10+">10+</td><td class="tier-2" data-en="8+" data-es="8+">8+</td><td class="tier-3" data-en="5+" data-es="5+">5+</td><td class="tier-4" data-en="3-5" data-es="3-5">3-5</td><td class="tier-5" data-en="2-3 with verifiable cash flow" data-es="2-3 con flujo verificable">2-3 with verifiable cash flow</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="PREFERRED INDUSTRIES" data-es="INDUSTRIAS PREFERIDAS">PREFERRED INDUSTRIES</th>
+    <td class="tier-1" data-en="Healthcare; medical/dental; restaurants; retail; wholesale; manufacturing; professional services" data-es="Salud; médico/dental; restaurantes; comercio; mayoreo; manufactura; servicios profesionales">Healthcare; medical/dental; restaurants; retail; wholesale; manufacturing; professional services</td><td class="tier-2" data-en="Healthcare; restaurants; retail; auto repair; manufacturing; professional services; e-commerce" data-es="Salud; restaurantes; comercio; reparación de autos; manufactura; servicios profesionales; comercio electrónico">Healthcare; restaurants; retail; auto repair; manufacturing; professional services; e-commerce</td><td class="tier-3" data-en="Restaurants; retail; home services; auto repair; contractors; medical; e-commerce" data-es="Restaurantes; comercio; servicios del hogar; reparación de autos; contratistas; médico; comercio electrónico">Restaurants; retail; home services; auto repair; contractors; medical; e-commerce</td><td class="tier-4" data-en="Restaurants; retail; repair services; home services; recurring services; beauty/salons; food service" data-es="Restaurantes; comercio; reparaciones; servicios del hogar; servicios recurrentes; belleza/salones; alimentos">Restaurants; retail; repair services; home services; recurring services; beauty/salons; food service</td><td class="tier-5" data-en="Retail; restaurants; repair services; home services; food service; beauty/salons; e-commerce" data-es="Comercio; restaurantes; reparaciones; servicios del hogar; alimentos; belleza/salones; comercio electrónico">Retail; restaurants; repair services; home services; food service; beauty/salons; e-commerce</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="RESTRICTED / HIGH-RISK INDUSTRIES" data-es="INDUSTRIAS RESTRINGIDAS / ALTO RIESGO">RESTRICTED / HIGH-RISK INDUSTRIES</th>
+    <td class="tier-1" data-en="Not Tier A: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious" data-es="No son Nivel A: servicios financieros; firmas legales; autos usados; transporte; gasolineras; inversión inmobiliaria; entidades sin fines de lucro/religiosas">Not Tier A: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious</td><td class="tier-2" data-en="Case by case: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious" data-es="Caso por caso: servicios financieros; firmas legales; autos usados; transporte; gasolineras; inversión inmobiliaria; entidades sin fines de lucro/religiosas">Case by case: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious</td><td class="tier-3" data-en="Commonly limited: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious" data-es="Comúnmente limitadas: servicios financieros; firmas legales; autos usados; transporte; gasolineras; inversión inmobiliaria; entidades sin fines de lucro/religiosas">Commonly limited: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious</td><td class="tier-4" data-en="Conservative: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious" data-es="Conservador: servicios financieros; firmas legales; autos usados; transporte; gasolineras; inversión inmobiliaria; entidades sin fines de lucro/religiosas">Conservative: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious</td><td class="tier-5" data-en="Often declined: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious" data-es="Frecuentemente declinadas: servicios financieros; firmas legales; autos usados; transporte; gasolineras; inversión inmobiliaria; entidades sin fines de lucro/religiosas">Often declined: financial services; law firms; used auto sales; trucking; gas stations; real estate investment; non-profits/religious</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="STATE RESTRICTIONS" data-es="RESTRICCIONES ESTATALES">STATE RESTRICTIONS</th>
+    <td class="tier-1" data-en="Most states; TX may use a loan structure; CA/NY often require 4 bank months" data-es="La mayoría de estados; TX puede usar un préstamo; CA/NY suelen requerir 4 meses bancarios">Most states; TX may use a loan structure; CA/NY often require 4 bank months</td><td class="tier-2" data-en="Availability varies; TX/VA may require stronger revenue or time in business" data-es="La disponibilidad varía; TX/VA pueden exigir más ingresos o antigüedad">Availability varies; TX/VA may require stronger revenue or time in business</td><td class="tier-3" data-en="Some programs exclude VA, CT, UT, ND, AR or TX; verify before submission" data-es="Algunos programas excluyen VA, CT, UT, ND, AR o TX; verificar antes de enviar">Some programs exclude VA, CT, UT, ND, AR or TX; verify before submission</td><td class="tier-4" data-en="State and entity restrictions can limit specialty programs" data-es="Restricciones estatales y de entidad pueden limitar programas especiales">State and entity restrictions can limit specialty programs</td><td class="tier-5" data-en="Restricted-state exceptions are limited; verify before submission" data-es="Excepciones estatales limitadas; verificar antes de enviar">Restricted-state exceptions are limited; verify before submission</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="BANKRUPTCY" data-es="BANCARROTA">BANKRUPTCY</th>
+    <td class="tier-1" data-en="None" data-es="Ninguna">None</td><td class="tier-2" data-en="No open or recent bankruptcy" data-es="Sin bancarrota abierta o reciente">No open or recent bankruptcy</td><td class="tier-3" data-en="Discharged or dismissed 12+ months ago, case by case" data-es="Descargada o desestimada hace 12+ meses, caso por caso">Discharged or dismissed 12+ months ago, case by case</td><td class="tier-4" data-en="12+ months ago with strong compensating factors" data-es="Hace 12+ meses con factores compensatorios fuertes">12+ months ago with strong compensating factors</td><td class="tier-5" data-en="Open or under 12 months usually declined" data-es="Abierta o menor de 12 meses usualmente se declina">Open or under 12 months usually declined</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="TAX LIENS" data-es="GRAVÁMENES FISCALES">TAX LIENS</th>
+    <td class="tier-1" data-en="None" data-es="Ninguno">None</td><td class="tier-2" data-en="Satisfied or small lien on current payment plan" data-es="Satisfecho o pequeño con plan de pago vigente">Satisfied or small lien on current payment plan</td><td class="tier-3" data-en="Documented payment plan required" data-es="Plan de pago documentado requerido">Documented payment plan required</td><td class="tier-4" data-en="Payment plan plus strong cash flow, case by case" data-es="Plan de pago y flujo fuerte, caso por caso">Payment plan plus strong cash flow, case by case</td><td class="tier-5" data-en="Unresolved lien usually declined" data-es="Gravamen sin resolver usualmente se declina">Unresolved lien usually declined</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="OWNERSHIP REQUIRED" data-es="PROPIEDAD REQUERIDA">OWNERSHIP REQUIRED</th>
+    <td class="tier-1" data-en="Usually 51%+ combined; some programs require 75%; disclose/sign as required" data-es="Usualmente 51%+ combinado; algunos programas exigen 75%; declarar/firmar según aplique">Usually 51%+ combined; some programs require 75%; disclose/sign as required</td><td class="tier-2" data-en="Usually 51%+ combined; all majority owners may need to sign" data-es="Usualmente 51%+ combinado; todos los propietarios mayoritarios pueden tener que firmar">Usually 51%+ combined; all majority owners may need to sign</td><td class="tier-3" data-en="51%+ commonly required; other owners may need to join the application" data-es="51%+ es común; otros propietarios pueden tener que unirse a la solicitud">51%+ commonly required; other owners may need to join the application</td><td class="tier-4" data-en="Proof required; owner disclosure may begin at 20%-25%" data-es="Se exige prueba; la declaración puede comenzar en 20%-25%">Proof required; owner disclosure may begin at 20%-25%</td><td class="tier-5" data-en="Program-specific; proof and owner background review may apply" data-es="Depende del programa; pueden revisar prueba y antecedentes de propietarios">Program-specific; proof and owner background review may apply</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="PRIOR MCA DEFAULTS / UCCS" data-es="INCUMPLIMIENTOS MCA / UCC PREVIOS">PRIOR MCA DEFAULTS / UCCS</th>
+    <td class="tier-1" data-en="None" data-es="Ninguno">None</td><td class="tier-2" data-en="No active defaults; satisfied items reviewed" data-es="Sin incumplimientos activos; satisfechos se revisan">No active defaults; satisfied items reviewed</td><td class="tier-3" data-en="Older satisfied defaults may be considered" data-es="Incumplimientos antiguos satisfechos pueden considerarse">Older satisfied defaults may be considered</td><td class="tier-4" data-en="Satisfied default with positive history, case by case" data-es="Incumplimiento satisfecho con historial positivo, caso por caso">Satisfied default with positive history, case by case</td><td class="tier-5" data-en="Recent or unpaid default usually declined" data-es="Incumplimiento reciente o impago usualmente se declina">Recent or unpaid default usually declined</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="SPECIAL CONSIDERATIONS" data-es="CONSIDERACIONES ESPECIALES">SPECIAL CONSIDERATIONS</th>
+    <td class="tier-1" data-en="Best value may include longer terms, flexible payments, lower pricing and early-pay options" data-es="Mejor valor puede incluir plazos largos, pagos flexibles, mejor precio y opciones de pago anticipado">Best value may include longer terms, flexible payments, lower pricing and early-pay options</td><td class="tier-2" data-en="Strong files may receive better term, payment frequency, renewal or payoff support" data-es="Archivos fuertes pueden lograr mejor plazo, frecuencia, renovación o apoyo de pago">Strong files may receive better term, payment frequency, renewal or payoff support</td><td class="tier-3" data-en="Higher-risk SICs, satisfied defaults or extra positions may be considered with strong offsets" data-es="SIC de alto riesgo, defaults satisfechos o posiciones extra pueden evaluarse con factores fuertes">Higher-risk SICs, satisfied defaults or extra positions may be considered with strong offsets</td><td class="tier-4" data-en="Starter offers, split payments or added financing may be available with compensating factors" data-es="Ofertas iniciales, pagos divididos o fondos adicionales pueden existir con factores compensatorios">Starter offers, split payments or added financing may be available with compensating factors</td><td class="tier-5" data-en="Specialty, starter or consolidation structures only; expect smaller and shorter offers" data-es="Solo estructuras especiales, iniciales o de consolidación; montos y plazos más conservadores">Specialty, starter or consolidation structures only; expect smaller and shorter offers</td>
+  </tr>
+<tr>
+    <th scope="row" data-en="AUTOMATIC DECLINES" data-es="DECLINACIONES AUTOMÁTICAS">AUTOMATIC DECLINES</th>
+    <td class="tier-1" data-en="Financial-fraud concerns; manipulated documents; stop-payments to funders" data-es="Riesgo de fraude financiero; documentos manipulados; stop-payments a funders">Financial-fraud concerns; manipulated documents; stop-payments to funders</td><td class="tier-2" data-en="Financial-fraud concerns; manipulated documents; stop-payments to funders" data-es="Riesgo de fraude financiero; documentos manipulados; stop-payments a funders">Financial-fraud concerns; manipulated documents; stop-payments to funders</td><td class="tier-3" data-en="Financial-fraud concerns; manipulated documents; stop-payments to funders" data-es="Riesgo de fraude financiero; documentos manipulados; stop-payments a funders">Financial-fraud concerns; manipulated documents; stop-payments to funders</td><td class="tier-4" data-en="Financial-fraud concerns; manipulated documents; stop-payments to funders" data-es="Riesgo de fraude financiero; documentos manipulados; stop-payments a funders">Financial-fraud concerns; manipulated documents; stop-payments to funders</td><td class="tier-5" data-en="Financial-fraud concerns; manipulated documents; stop-payments to funders" data-es="Riesgo de fraude financiero; documentos manipulados; stop-payments a funders">Financial-fraud concerns; manipulated documents; stop-payments to funders</td>
+  </tr></tbody>
+      </table>
+    </section>
+    <section class="section">
+      <h2 class="section-title" data-en="POSSIBLE EXCEPTIONS &amp; IMPORTANT POINTS" data-es="POSIBLES EXCEPCIONES Y PUNTOS IMPORTANTES">POSSIBLE EXCEPTIONS &amp; IMPORTANT POINTS</h2>
+      <div class="risk-list"><div class="risk-row"><strong data-en="APPROVAL TERMS" data-es="TÉRMINOS DE APROBACIÓN">APPROVAL TERMS</strong><span data-en="FUNDING, RATE AND TERM DEPEND ON THE COMPLETE PROFILE, INCLUDING REVENUE, CREDIT, DEBT, BANK ACTIVITY AND INDUSTRY." data-es="MONTO, TASA Y PLAZO DEPENDEN DEL PERFIL COMPLETO: INGRESOS, CRÉDITO, DEUDA, ACTIVIDAD BANCARIA E INDUSTRIA.">FUNDING, RATE AND TERM DEPEND ON THE COMPLETE PROFILE, INCLUDING REVENUE, CREDIT, DEBT, BANK ACTIVITY AND INDUSTRY.</span></div>
+<div class="risk-row"><strong data-en="HIGH-RISK INDUSTRIES" data-es="INDUSTRIAS DE ALTO RIESGO">HIGH-RISK INDUSTRIES</strong><span data-en="REVIEWED CASE BY CASE; APPROVALS ARE GENERALLY SMALLER, SHORTER AND MORE CONSERVATIVE." data-es="SE REVISAN CASO POR CASO; LAS OFERTAS SUELEN SER MENORES, MÁS CORTAS Y CONSERVADORAS.">REVIEWED CASE BY CASE; APPROVALS ARE GENERALLY SMALLER, SHORTER AND MORE CONSERVATIVE.</span></div>
+<div class="risk-row"><strong data-en="CONSOLIDATION" data-es="CONSOLIDACIÓN">CONSOLIDATION</strong><span data-en="MULTIPLE MCAS ARE ALLOWED. ADDED FUNDING, REFINANCE OR CONSOLIDATION MAY BE AVAILABLE SUBJECT TO AFFORDABILITY." data-es="SE PERMITEN MÚLTIPLES MCA. PUEDE HABER FONDOS ADICIONALES, REFINANCIAMIENTO O CONSOLIDACIÓN SEGÚN CAPACIDAD.">MULTIPLE MCAS ARE ALLOWED. ADDED FUNDING, REFINANCE OR CONSOLIDATION MAY BE AVAILABLE SUBJECT TO AFFORDABILITY.</span></div>
+<div class="risk-row"><strong data-en="ITIN ELIGIBILITY" data-es="ELEGIBILIDAD CON ITIN">ITIN ELIGIBILITY</strong><span data-en="CASE BY CASE: 12+ MONTHS IN BUSINESS AND MORE THAN $25,000 IN MONTHLY REVENUE." data-es="CASO POR CASO: 12+ MESES OPERANDO Y MÁS DE $25,000 EN INGRESOS MENSUALES.">CASE BY CASE: 12+ MONTHS IN BUSINESS AND MORE THAN $25,000 IN MONTHLY REVENUE.</span></div>
+<div class="risk-row"><strong data-en="DOCUMENTS" data-es="DOCUMENTOS">DOCUMENTS</strong><span data-en="TYPICAL STIPS: ID, VOIDED CHECK, OWNERSHIP PROOF AND BANK VERIFICATION. LARGE DEALS MAY NEED TAX RETURNS OR FINANCIALS." data-es="STIPS TÍPICOS: ID, CHEQUE ANULADO, PRUEBA DE PROPIEDAD Y VERIFICACIÓN BANCARIA. OPERACIONES GRANDES PUEDEN REQUERIR IMPUESTOS O ESTADOS FINANCIEROS.">TYPICAL STIPS: ID, VOIDED CHECK, OWNERSHIP PROOF AND BANK VERIFICATION. LARGE DEALS MAY NEED TAX RETURNS OR FINANCIALS.</span></div></div>
+    </section>
+    <section class="section">
+      <h2 class="section-title" data-en="MINIMUM REQUIRED DOCUMENTS" data-es="DOCUMENTOS MÍNIMOS REQUERIDOS">MINIMUM REQUIRED DOCUMENTS</h2>
+      <ol class="checklist"><li><span class="check-number">1</span><span data-en="Signed application" data-es="Solicitud firmada">Signed application</span></li>
+<li><span class="check-number">2</span><span data-en="Most recent 4-6 months of complete business bank statements" data-es="Últimos 4-6 meses de estados bancarios comerciales completos">Most recent 4-6 months of complete business bank statements</span></li>
+<li><span class="check-number">3</span><span data-en="Requests above $150,000: tax returns and current Profit &amp; Loss statement" data-es="Solicitudes mayores de $150,000: declaraciones de impuestos y estado actual de pérdidas y ganancias">Requests above $150,000: tax returns and current Profit &amp; Loss statement</span></li>
+<li><span class="check-number">4</span><span data-en="Consolidation requests: current balance and payoff details" data-es="Solicitudes de consolidación: detalles de saldos y cartas de pago">Consolidation requests: current balance and payoff details</span></li></ol>
+    </section>
+    <p class="disclaimer" data-en="Disclaimer: All deals are subject to review. Underwriting guidelines, approval criteria, terms and program availability may change from time to time based on market conditions and the complete risk profile of each applicant." data-es="Aviso: Todas las operaciones están sujetas a revisión. Las guías de suscripción, los criterios de aprobación, los términos y la disponibilidad de los programas pueden cambiar según las condiciones del mercado y el perfil de riesgo completo de cada solicitante.">Disclaimer: All deals are subject to review. Underwriting guidelines, approval criteria, terms and program availability may change from time to time based on market conditions and the complete risk profile of each applicant.</p>
+  </main>
+  <script>
+    const languageButtons = Array.from(document.querySelectorAll("[data-lang]"));
+    function applyLanguage(language) {
+      document.documentElement.lang = language;
+      document.querySelectorAll("[data-en][data-es]").forEach(function(element) {
+        element.textContent = element.dataset[language];
+      });
+      languageButtons.forEach(function(button) {
+        const active = button.dataset.lang === language;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    }
+    languageButtons.forEach(function(button) {
+      button.addEventListener("click", function() { applyLanguage(button.dataset.lang); });
+    });
+    document.getElementById("printButton").addEventListener("click", function() { window.print(); });
+  </script>
+</body>
+</html>
