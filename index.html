@@ -87,6 +87,27 @@
       .workflow-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
+      .app-header { overflow-x: visible; }
+      .header-inner {
+        min-width: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          "brand language"
+          "contact contact"
+          "download print";
+        gap: 8px;
+        padding: 10px 12px;
+      }
+      .brand-lockup { grid-area: brand; }
+      .brand-logo { width: 146px; }
+      .header-contact { grid-area: contact; min-width: 0; justify-content: center; }
+      .header-contact a { font-size: 10px; }
+      .header-actions { display: contents; }
+      .header-actions > .button:first-child { grid-area: download; }
+      .header-actions > .button:nth-child(2) { grid-area: print; }
+      .header-actions > .button { width: 100%; min-height: 34px; }
+      .language-toggle { grid-area: language; justify-self: end; min-height: 34px; }
       .page-title { font-size: 20px; }
       main { padding: 18px 12px 38px; }
       .risk-row { grid-template-columns: 1fr; }
